@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -79,7 +80,7 @@ public class UsuarioService {
 		List<GrupoUsuario> todosGrupos;
 		todosGrupos = grupos.buscaGrupos(usuario);
 		for (int i = 0; i < todosGrupos.size(); i++) {
-			if (todosGrupos.get(i).getCodigo() == gruposUsu.getCodigo()) {
+			if (Objects.equals(todosGrupos.get(i).getCodigo(), gruposUsu.getCodigo())) {
 				todosGrupos.remove(i);
 			}
 		}
