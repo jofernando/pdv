@@ -1,5 +1,7 @@
 package net.originmobi.pdv.model;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 import java.io.Serializable;
 import java.sql.Date;
 import java.util.List;
@@ -144,6 +146,13 @@ public class Usuario implements Serializable {
 
 		public UsuarioBuilder withSenha(String senha) {
 			this.senha = senha;
+			return this;
+		}
+
+		public UsuarioBuilder withSenha(String senha, boolean criptografar) {
+			if (!criptografar) return this.withSenha(senha);
+			BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+			this.senha = encoder.encode(senha);
 			return this;
 		}
 
