@@ -43,6 +43,10 @@ public class GrupoUsuario implements Serializable {
 	public GrupoUsuario() {
 	}
 
+	public GrupoUsuario(Long codigo) {
+		this.codigo = codigo;
+	}
+
 	public GrupoUsuario(String nome, String descricao, List<Usuario> usuario, List<Permissoes> permissoes) {
 		super();
 		this.nome = nome;
