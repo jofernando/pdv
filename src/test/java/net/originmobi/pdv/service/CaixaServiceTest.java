@@ -60,7 +60,7 @@ class CaixaServiceTest {
             assertEquals("Senha incorreta, favor verifique", this.caixaService.fechaCaixa(1L, "123456"));
             assertEquals("Caixa fechado com sucesso", this.caixaService.fechaCaixa(1L, "senha"));
             Exception exception = assertThrows(RuntimeException.class, () -> this.caixaService.fechaCaixa(2L, "senha"), "não lançou exceção");
-            assertEquals(exception.getMessage(), "Caixa já esta fechado");
+            assertEquals("Caixa já esta fechado", exception.getMessage());
         }
     }
 
