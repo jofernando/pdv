@@ -199,4 +199,109 @@ public class Caixa implements Serializable {
 		this.conta = conta;
 	}
 
+	public static final class CaixaBuilder {
+		private Long codigo;
+		private String Descricao;
+		private Double valor_abertura;
+		private Double valor_total;
+		private Double valor_fechamento;
+		private Double valor_entrada;
+		private Double valor_saida;
+		private CaixaTipo tipo;
+		private String agencia;
+		private String conta;
+		private Date data_cadastro;
+		private Timestamp data_fechamento;
+		private Usuario usuario;
+
+		private CaixaBuilder() {
+		}
+
+		public static CaixaBuilder aCaixa() {
+			return new CaixaBuilder();
+		}
+
+		public CaixaBuilder withCodigo(Long codigo) {
+			this.codigo = codigo;
+			return this;
+		}
+
+		public CaixaBuilder withDescricao(String Descricao) {
+			this.Descricao = Descricao;
+			return this;
+		}
+
+		public CaixaBuilder withValor_abertura(Double valor_abertura) {
+			this.valor_abertura = valor_abertura;
+			return this;
+		}
+
+		public CaixaBuilder withValor_total(Double valor_total) {
+			this.valor_total = valor_total;
+			return this;
+		}
+
+		public CaixaBuilder withValor_fechamento(Double valor_fechamento) {
+			this.valor_fechamento = valor_fechamento;
+			return this;
+		}
+
+		public CaixaBuilder withValor_entrada(Double valor_entrada) {
+			this.valor_entrada = valor_entrada;
+			return this;
+		}
+
+		public CaixaBuilder withValor_saida(Double valor_saida) {
+			this.valor_saida = valor_saida;
+			return this;
+		}
+
+		public CaixaBuilder withTipo(CaixaTipo tipo) {
+			this.tipo = tipo;
+			return this;
+		}
+
+		public CaixaBuilder withAgencia(String agencia) {
+			this.agencia = agencia;
+			return this;
+		}
+
+		public CaixaBuilder withConta(String conta) {
+			this.conta = conta;
+			return this;
+		}
+
+		public CaixaBuilder withData_cadastro(Date data_cadastro) {
+			this.data_cadastro = data_cadastro;
+			return this;
+		}
+
+		public CaixaBuilder withData_fechamento(Timestamp data_fechamento) {
+			this.data_fechamento = data_fechamento;
+			return this;
+		}
+
+		public CaixaBuilder withUsuario(Usuario usuario) {
+			this.usuario = usuario;
+			return this;
+		}
+
+		public Caixa build() {
+			Caixa caixa = new Caixa();
+			caixa.setCodigo(codigo);
+			caixa.setDescricao(Descricao);
+			caixa.setValor_abertura(valor_abertura);
+			caixa.setValor_total(valor_total);
+			caixa.setValor_fechamento(valor_fechamento);
+			caixa.setValor_entrada(valor_entrada);
+			caixa.setValor_saida(valor_saida);
+			caixa.setTipo(tipo);
+			caixa.setAgencia(agencia);
+			caixa.setConta(conta);
+			caixa.setData_cadastro(data_cadastro);
+			caixa.setData_fechamento(data_fechamento);
+			caixa.setUsuario(usuario);
+			return caixa;
+		}
+	}
 }
