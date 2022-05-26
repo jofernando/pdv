@@ -37,18 +37,18 @@ public class UsuarioServiceTest {
 
     @BeforeEach
     public void setUp() {
-        this.usuarioComUserUtilizado = new Usuario(null, "usuarioComUserUtilizado", "senha", new Pessoa(1L));
-        this.usuarioComPessoaJaVinculada = new Usuario(null, "usuarioComPessoaJaVinculada", "senha", new Pessoa(2L));
-        this.usuarioComUserNaoUtilizadoComPessoaNaoVinculada = new Usuario(null, "usuarioComUserNaoUtilizadoComPessoaNaoVinculada", "senha", new Pessoa(3L));
-        this.usuarioJaCadastrado = new Usuario(1L, "", "senha", null);
+        this.usuarioComUserUtilizado = Usuario.UsuarioBuilder.anUsuario().withUser("usuarioComUserUtilizado").withSenha("senha").withPessoa(new Pessoa(1L)).build();
+        this.usuarioComPessoaJaVinculada = Usuario.UsuarioBuilder.anUsuario().withUser("usuarioComPessoaJaVinculada").withSenha("senha").withPessoa(new Pessoa(2L)).build();
+        this.usuarioComUserNaoUtilizadoComPessoaNaoVinculada = Usuario.UsuarioBuilder.anUsuario().withUser("usuarioComUserNaoUtilizadoComPessoaNaoVinculada").withSenha("senha").withPessoa(new Pessoa(3L)).build();
+        this.usuarioJaCadastrado = Usuario.UsuarioBuilder.anUsuario().withCodigo(1L).withSenha("senha").build();
 
         this.grupo = new GrupoUsuario(1L);
         List<GrupoUsuario> grupos = new ArrayList<>();
         grupos.add(this.grupo);
         GrupoUsuario grupo = new GrupoUsuario(2L);
         grupos.add(grupo);
-        this.usuarioComGrupos = new Usuario(2L, grupos);
-        this.usuarioSemGrupo = new Usuario(3L, new ArrayList<>());
+        this.usuarioComGrupos = Usuario.UsuarioBuilder.anUsuario().withCodigo(2L).withGrupousuario(grupos).build();
+        this.usuarioSemGrupo = Usuario.UsuarioBuilder.anUsuario().withCodigo(3L).withGrupousuario(new ArrayList<>()).build();
 
         when(this.usuarios.findByUserEquals("usuarioComUserUtilizado")).thenReturn(this.usuarioComUserUtilizado);
         when(this.usuarios.findByUserEquals("usuarioComPessoaJaVinculada")).thenReturn(null);

@@ -45,16 +45,8 @@ public class Usuario implements Serializable {
 	public Usuario() {
 	}
 
-	public Usuario(Long codigo, String user, String senha, Pessoa pessoa) {
-		this.codigo = codigo;
-		this.user = user;
+	public Usuario(String senha) {
 		this.senha = senha;
-		this.pessoa = pessoa;
-	}
-
-	public Usuario(Long codigo, List<GrupoUsuario> grupousuario) {
-		this.codigo = codigo;
-		this.grupousuario = grupousuario;
 	}
 
 	public Usuario(Long codigo, String user, String senha, Date data_cadastro, Pessoa pessoa,
@@ -124,4 +116,67 @@ public class Usuario implements Serializable {
 		this.permissoes = permissoes;
 	}
 
+	public static final class UsuarioBuilder {
+		private Long codigo;
+		private String user;
+		private String senha;
+		private Date data_cadastro;
+		private Pessoa pessoa;
+		private List<GrupoUsuario> grupousuario;
+		private List<Permissoes> permissoes;
+
+		private UsuarioBuilder() {
+		}
+
+		public static UsuarioBuilder anUsuario() {
+			return new UsuarioBuilder();
+		}
+
+		public UsuarioBuilder withCodigo(Long codigo) {
+			this.codigo = codigo;
+			return this;
+		}
+
+		public UsuarioBuilder withUser(String user) {
+			this.user = user;
+			return this;
+		}
+
+		public UsuarioBuilder withSenha(String senha) {
+			this.senha = senha;
+			return this;
+		}
+
+		public UsuarioBuilder withData_cadastro(Date data_cadastro) {
+			this.data_cadastro = data_cadastro;
+			return this;
+		}
+
+		public UsuarioBuilder withPessoa(Pessoa pessoa) {
+			this.pessoa = pessoa;
+			return this;
+		}
+
+		public UsuarioBuilder withGrupousuario(List<GrupoUsuario> grupousuario) {
+			this.grupousuario = grupousuario;
+			return this;
+		}
+
+		public UsuarioBuilder withPermissoes(List<Permissoes> permissoes) {
+			this.permissoes = permissoes;
+			return this;
+		}
+
+		public Usuario build() {
+			Usuario usuario = new Usuario();
+			usuario.setCodigo(codigo);
+			usuario.setGrupoUsuario(grupousuario);
+			usuario.setUser(user);
+			usuario.setSenha(senha);
+			usuario.setData_cadastro(data_cadastro);
+			usuario.setPessoa(pessoa);
+			usuario.setPermissoes(permissoes);
+			return usuario;
+		}
+	}
 }
