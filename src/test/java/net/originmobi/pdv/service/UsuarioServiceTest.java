@@ -1,6 +1,8 @@
 package net.originmobi.pdv.service;
 
-import net.originmobi.pdv.model.*;
+import net.originmobi.pdv.model.GrupoUsuario;
+import net.originmobi.pdv.model.Pessoa;
+import net.originmobi.pdv.model.Usuario;
 import net.originmobi.pdv.repository.UsuarioRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
