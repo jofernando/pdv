@@ -63,8 +63,6 @@ public class UsuarioService {
 	public String addGrupo(Long codUsu, Long codGru) {
 		Usuario usuario = usuarios.findByCodigoIn(codUsu);
 		GrupoUsuario gruposUsu = grupos.buscaGrupo(codGru);
-		List<GrupoUsuario> listaGrupo = new ArrayList<>();
-		listaGrupo.add(gruposUsu);
 		if (!usuario.getGrupoUsuario().contains(gruposUsu)) {
 			usuario.getGrupoUsuario().add(gruposUsu);
 		} else {
