@@ -52,6 +52,11 @@ public class Usuario implements Serializable {
 		this.pessoa = pessoa;
 	}
 
+	public Usuario(Long codigo, List<GrupoUsuario> grupousuario) {
+		this.codigo = codigo;
+		this.grupousuario = grupousuario;
+	}
+
 	public Usuario(Long codigo, String user, String senha, Date data_cadastro, Pessoa pessoa,
 				   List<GrupoUsuario> grupousuario, List<Permissoes> permissoes) {
 		this.codigo = codigo;
