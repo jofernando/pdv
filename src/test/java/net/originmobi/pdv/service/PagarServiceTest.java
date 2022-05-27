@@ -3,8 +3,8 @@ package net.originmobi.pdv.service;
 import net.originmobi.pdv.model.Fornecedor;
 import net.originmobi.pdv.model.PagarTipo;
 import net.originmobi.pdv.repository.PagarRepository;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -15,7 +15,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import java.time.LocalDate;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(SpringExtension.class)
@@ -33,7 +33,7 @@ class PagarServiceTest {
     Fornecedor fornecedor;
     PagarTipo pagarTipo;
 
-    @BeforeEach
+    @BeforeAll
     void setUp() {
         this.fornecedor = Fornecedor.FornecedorBuilder.aFornecedor().withCodigo(1L).build();
         this.pagarTipo = PagarTipo.PagarTipoBuilder.aPagarTipo().withCodigo(1L).withDescricao("descrição").build();
@@ -50,7 +50,7 @@ class PagarServiceTest {
     }
 
 
-    @AfterEach
+    @AfterAll
     void tearDown() {
     }
 }
