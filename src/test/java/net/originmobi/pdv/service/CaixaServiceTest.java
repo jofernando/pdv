@@ -49,10 +49,6 @@ class CaixaServiceTest {
     }
 
     @Test
-    void cadastro() {
-    }
-
-    @Test
     void fechaCaixa() {
         try (MockedStatic<Aplicacao> aplicacao = Mockito.mockStatic(Aplicacao.class)) {
             aplicacao.when(Aplicacao::getInstancia).thenReturn(this.aplicacao);
