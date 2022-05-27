@@ -64,4 +64,39 @@ public class PagarTipo implements Serializable {
 		this.data_cadastro = data_cadastro;
 	}
 
+	public static final class PagarTipoBuilder {
+		private Long codigo;
+		private String descricao;
+		private Timestamp data_cadastro;
+
+		private PagarTipoBuilder() {
+		}
+
+		public static PagarTipoBuilder aPagarTipo() {
+			return new PagarTipoBuilder();
+		}
+
+		public PagarTipoBuilder withCodigo(Long codigo) {
+			this.codigo = codigo;
+			return this;
+		}
+
+		public PagarTipoBuilder withDescricao(String descricao) {
+			this.descricao = descricao;
+			return this;
+		}
+
+		public PagarTipoBuilder withData_cadastro(Timestamp data_cadastro) {
+			this.data_cadastro = data_cadastro;
+			return this;
+		}
+
+		public PagarTipo build() {
+			PagarTipo pagarTipo = new PagarTipo();
+			pagarTipo.setCodigo(codigo);
+			pagarTipo.setDescricao(descricao);
+			pagarTipo.setData_cadastro(data_cadastro);
+			return pagarTipo;
+		}
+	}
 }

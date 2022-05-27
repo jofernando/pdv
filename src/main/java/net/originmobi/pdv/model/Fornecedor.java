@@ -152,4 +152,88 @@ public class Fornecedor implements Serializable {
 		this.observacao = observacao;
 	}
 
+	public static final class FornecedorBuilder {
+		private Long codigo;
+		private String nome_fantasia;
+		private String nome;
+		private String cnpj;
+		private String inscricao_estadual;
+		private int ativo;
+		private String observacao;
+		private Date data_cadastro;
+		private List<Telefone> telefone;
+		private Endereco endereco;
+
+		private FornecedorBuilder() {
+		}
+
+		public static FornecedorBuilder aFornecedor() {
+			return new FornecedorBuilder();
+		}
+
+		public FornecedorBuilder withCodigo(Long codigo) {
+			this.codigo = codigo;
+			return this;
+		}
+
+		public FornecedorBuilder withNome_fantasia(String nome_fantasia) {
+			this.nome_fantasia = nome_fantasia;
+			return this;
+		}
+
+		public FornecedorBuilder withNome(String nome) {
+			this.nome = nome;
+			return this;
+		}
+
+		public FornecedorBuilder withCnpj(String cnpj) {
+			this.cnpj = cnpj;
+			return this;
+		}
+
+		public FornecedorBuilder withInscricao_estadual(String inscricao_estadual) {
+			this.inscricao_estadual = inscricao_estadual;
+			return this;
+		}
+
+		public FornecedorBuilder withAtivo(int ativo) {
+			this.ativo = ativo;
+			return this;
+		}
+
+		public FornecedorBuilder withObservacao(String observacao) {
+			this.observacao = observacao;
+			return this;
+		}
+
+		public FornecedorBuilder withData_cadastro(Date data_cadastro) {
+			this.data_cadastro = data_cadastro;
+			return this;
+		}
+
+		public FornecedorBuilder withTelefone(List<Telefone> telefone) {
+			this.telefone = telefone;
+			return this;
+		}
+
+		public FornecedorBuilder withEndereco(Endereco endereco) {
+			this.endereco = endereco;
+			return this;
+		}
+
+		public Fornecedor build() {
+			Fornecedor fornecedor = new Fornecedor();
+			fornecedor.setCodigo(codigo);
+			fornecedor.setNome_fantasia(nome_fantasia);
+			fornecedor.setNome(nome);
+			fornecedor.setCnpj(cnpj);
+			fornecedor.setInscricao_estadual(inscricao_estadual);
+			fornecedor.setAtivo(ativo);
+			fornecedor.setObservacao(observacao);
+			fornecedor.setData_cadastro(data_cadastro);
+			fornecedor.setTelefone(telefone);
+			fornecedor.setEndereco(endereco);
+			return fornecedor;
+		}
+	}
 }
