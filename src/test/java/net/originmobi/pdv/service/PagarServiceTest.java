@@ -3,22 +3,23 @@ package net.originmobi.pdv.service;
 import net.originmobi.pdv.model.Fornecedor;
 import net.originmobi.pdv.model.PagarTipo;
 import net.originmobi.pdv.repository.PagarRepository;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.time.LocalDate;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(SpringExtension.class)
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class PagarServiceTest {
 
     @Mock
@@ -41,12 +42,20 @@ class PagarServiceTest {
         when(this.fornecedorService.busca(2L)).thenReturn(Optional.empty());
     }
 
-    @Test
+    @TestFactory
     @DisplayName("Teste para cadastrar pagamento")
-    public void cadastrar() {
-        assertEquals("Despesa lançada com sucesso", this.pagarService.cadastrar(1L, 154.154, "", LocalDate.now(), this.pagarTipo));
-        assertEquals("Despesa lançada com sucesso", this.pagarService.cadastrar(1L, 154.154, "descricao", LocalDate.now(), this.pagarTipo));
-        assertEquals("Código do fornecedor inválido", this.pagarService.cadastrar(2L, 154.154, "", LocalDate.now(), this.pagarTipo));
+    Stream<DynamicTest> teste() {
+        List<String> observacoes = Arrays.asList("", "descricao");
+        List<Long> codigos = Arrays.asList(1L, 2L);
+        return observacoes.stream().flatMap(
+            obs -> (
+                codigos.stream().map(
+                    codigo -> DynamicTest.dynamicTest("observacao: " + obs + ", código: " + codigo,
+                            () -> assertEquals("Despesa lançada com sucesso", this.pagarService.cadastrar(1L, 154.154, obs, LocalDate.now(), this.pagarTipo))
+                    )
+                )
+            )
+        );
     }
 
 
