@@ -6,6 +6,7 @@ import net.originmobi.pdv.repository.CaixaRepository;
 import net.originmobi.pdv.singleton.Aplicacao;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -49,6 +50,7 @@ class CaixaServiceTest {
     }
 
     @Test
+    @DisplayName("Teste para fechar caixa")
     void fechaCaixa() {
         try (MockedStatic<Aplicacao> aplicacao = Mockito.mockStatic(Aplicacao.class)) {
             aplicacao.when(Aplicacao::getInstancia).thenReturn(this.aplicacao);

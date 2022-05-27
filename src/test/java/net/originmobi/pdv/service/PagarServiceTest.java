@@ -5,6 +5,7 @@ import net.originmobi.pdv.model.PagarTipo;
 import net.originmobi.pdv.repository.PagarRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -41,6 +42,7 @@ class PagarServiceTest {
     }
 
     @Test
+    @DisplayName("Teste para cadastrar pagamento")
     public void cadastrar() {
         assertEquals("Despesa lançada com sucesso", this.pagarService.cadastrar(1L, 154.154, "", LocalDate.now(), this.pagarTipo));
         assertEquals("Despesa lançada com sucesso", this.pagarService.cadastrar(1L, 154.154, "descricao", LocalDate.now(), this.pagarTipo));

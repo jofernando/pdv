@@ -6,6 +6,7 @@ import net.originmobi.pdv.model.Usuario;
 import net.originmobi.pdv.repository.UsuarioRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -70,6 +71,7 @@ public class UsuarioServiceTest {
         when(this.usuarios.findByPessoaCodigoEquals(3L)).thenReturn(null);
     }
 
+    @DisplayName("Testes para cadastrar usuário")
     @Test
     public void cadastrar() {
         assertAll("cadastro de usuários",
@@ -80,6 +82,7 @@ public class UsuarioServiceTest {
         );
     }
 
+    @DisplayName("Testes para adicionar grupo ao usuário informado")
     @Test
     public void addGrupo() {
         assertAll("adicionar grupo ao usuário",
@@ -88,6 +91,7 @@ public class UsuarioServiceTest {
         );
     }
 
+    @DisplayName("Testes para remover grupo informado do usuário informado")
     @Test
     public void removerGrupo() {
         String msg = this.usuarioService.removeGrupo(this.usuarioComGrupos.getCodigo(), 2L);
